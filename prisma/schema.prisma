@@ -1,0 +1,130 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearchPostgres"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Course {
+  id String @id @default(uuid())
+  userId String
+  title String @db.Text
+  description String? @db.Text
+  imageUrl String? @db.Text
+  price Float?
+  isPublished Boolean @default(false)
+
+  category Category? @relation(fields: [categoryId], references: [id])
+  categoryId String?
+
+  chapters Chapter[]
+  purchases Purchase[]
+  attachments Attachment[]
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([categoryId])
+}
+
+model Category {
+  id String @id @default(uuid())
+  name String @unique
+  courses Course[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Attachment {
+  id String @id @default(uuid())
+  name String
+  url String @db.Text
+
+  courseId String
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([courseId])
+}
+
+model Chapter {
+  id String @id @default(uuid())
+  title String
+  description String? @db.Text
+  videoUrl String? @db.Text
+  position Int
+  isPublished Boolean @default(false)
+  isFree Boolean @default(false)
+
+  muxData MuxData?
+
+  courseId String
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  userProgress UserProgress[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([courseId])
+}
+
+model MuxData {
+  id String @id @default(uuid())
+  assetId String
+  playbackId String?
+
+  chapterId String @unique
+  chapter Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+}
+
+model UserProgress {
+  id String @id @default(uuid())
+  userId String
+
+  chapterId String
+  chapter Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+
+  isCompleted Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
+
+  @@index([chapterId])
+  @@unique([userId, chapterId])
+}
+
+model Purchase {
+  id String @id @default(uuid())
+  userId String
+
+  courseId String
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
+
+  @@unique([userId, courseId])
+  @@index([courseId])
+}
+
+model StripeCustomer {
+  id String @id @default(uuid())
+  userId String
+  stripeCustomerId String @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

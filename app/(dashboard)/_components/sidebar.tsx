@@ -1,0 +1,18 @@
+import React from 'react'
+import Logo from './logo'
+import SidebarBarRoutes from './sidebar-routes'
+
+function Sidebar() {
+  return (
+    <div className='h-full border-r flex flex-col bg-white shadow-sm overflow-y-auto'>
+        <div className="p-6">
+            <Logo />
+        </div>
+        <div className="flex flex-col w-full">
+          <SidebarBarRoutes />
+        </div>
+    </div>
+  )
+}
+
+export default Sidebar
