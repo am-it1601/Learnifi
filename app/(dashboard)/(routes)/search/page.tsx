@@ -8,9 +8,16 @@ import { getCourses } from "@/actions/get-courses";
 import CoursesList from "@/components/courses-list";
 
 
+// interface SearchPageProps {
+//   searchParams: Promise<URLSearchParams>;
+// }
 interface SearchPageProps {
-  searchParams: Promise<URLSearchParams>;
+  searchParams: {
+    title: string
+    categoryId: string
+  };
 }
+
 
 const Search = async ({ searchParams }: SearchPageProps) => {
   const { userId } = await auth();
@@ -24,20 +31,20 @@ const Search = async ({ searchParams }: SearchPageProps) => {
     },
   });
   
-  const params = await searchParams;
-  const filters = Object.fromEntries(params.entries()) as {
-    title?: string;
-    categoryId?: string;
-  };
+  // const params = await searchParams;
+  // const filters = Object.fromEntries(params.entries()) as {
+  //   title?: string;
+  //   categoryId?: string;
+  // };
 
   const courses = await getCourses({
     userId,
-    ...filters,
+    ...searchParams,
   });
   return (
     <>
-        <SearchInput />
       <div className="px-6 pt-6 md:hidden md:mb-0 block">
+        <SearchInput />
       </div>
       <div className="p-6 space-y-4">
         <Categories items={categories} />

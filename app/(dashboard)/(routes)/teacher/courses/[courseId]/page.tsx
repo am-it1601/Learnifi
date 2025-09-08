@@ -40,6 +40,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
       },
     },
   });
+  console.log("course", course);
 
   if (!course) {
     return redirect("/");
@@ -64,7 +65,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const isComplete = requiredFields.every(Boolean);
   return (
     <>
-      {!course.isPublished && (
+      {course && !course.isPublished && (
         <Banner label="This course is unpublished. It will not be visible to the students." />
       )}
       <div className="p-6">

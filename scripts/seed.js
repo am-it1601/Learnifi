@@ -6,16 +6,12 @@ async function main() {
         // Create some categories
         const categories = await database.category.createMany({
             data: [
-                { name: 'Mathematics' },
-                { name: 'Science' },
+                { name: 'Photography' },
+                { name: 'Fitness' },
                 { name: 'History' },
-                { name: 'Literature' },
-                { name: 'Art' },
+                { name: 'Accounting' },
+                { name: 'Engineering' },
                 { name: 'Music' },
-                { name: 'Technology' },
-                { name: 'Business' },
-                { name: 'Health & Wellness' },
-                { name: 'Personal Development' },
             ],
             skipDuplicates: true,
         });
