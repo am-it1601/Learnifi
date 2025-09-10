@@ -15,7 +15,7 @@ async function AnalyticsPage() {
   return (
     <div className="p-6">
       <div className="grid md:grid-cols-2 grid-cols-1 gap-4 mb-4">
-        <DataCard label="Total Revenue" value={totalRevenue} />
+        <DataCard label="Total Revenue" value={totalRevenue} shouldFormat />
         <DataCard label="Total Sales" value={totalSales} />
       </div>
       <Chart data={data} />

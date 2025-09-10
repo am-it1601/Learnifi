@@ -22,7 +22,7 @@ export async function PATCH(
     });
 
     if (!ownCourse) {
-      return new NextResponse("Unauthorized", { status: 401 });
+      return new NextResponse("not found", { status: 404 });
     }
 
     const chapter = await db.chapter.findUnique({

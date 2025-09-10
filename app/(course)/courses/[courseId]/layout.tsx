@@ -4,11 +4,12 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import CourseSidebar from "./_components/course-sidebar";
 import CourseNavbar from "./_components/course-navbar";
+import React from "react";
 
 const CourseLayout = async ({
   children,
   params,
-}: LayoutProps<'/[courseId]'>) => {
+}: {children:React.ReactNode; params:{courseId: string}}) => {
   
   const { userId } = await auth();
 
@@ -20,7 +21,6 @@ const CourseLayout = async ({
   const course = await db.course.findUnique({
     where: {
       id: courseId,
-      userId,
     },
     include: {
       chapters: {
@@ -35,7 +35,7 @@ const CourseLayout = async ({
           },
         },
         orderBy: {
-          createdAt: "desc",
+          createdAt: "asc",
         },
       },
     },

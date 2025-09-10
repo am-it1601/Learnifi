@@ -24,7 +24,7 @@ const progressVariants = cva(
 export interface ProgressProps extends React.HTMLAttributes<HTMLDivElement>,
 VariantProps<typeof progressVariants>{}
 
-type CombinedProgressProps = ProgressProps & React.ComponentPropsWithRef<typeof ProgressPrimitive.Root>
+type CombinedProgressProps = ProgressProps & React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root>
 
 function Progress({
   className,

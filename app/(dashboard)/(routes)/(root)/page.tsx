@@ -1,7 +1,7 @@
 import { getDashboardCourses } from "@/actions/get-dashboard-courses";
 import CoursesList from "@/components/courses-list";
 import { auth } from "@clerk/nextjs/server";
-import { Clock } from "lucide-react";
+import { CheckCircle, Clock } from "lucide-react";
 import { redirect } from "next/navigation";
 import React from "react";
 import { InfoCard } from "./_components/info-card";
@@ -14,12 +14,19 @@ const Home = async () => {
   const { completedCourses, coursesInProgress } = await getDashboardCourses(
     userId
   );
+  console.log('courese progress', coursesInProgress);
+  
   return (
     <div className="p-6 space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <InfoCard
           icon={Clock}
           label="In Progress"
+          numberOfItems={coursesInProgress.length}
+        />
+        <InfoCard
+          icon={CheckCircle}
+          label="Completed"
           numberOfItems={coursesInProgress.length}
           variant="success"
         />

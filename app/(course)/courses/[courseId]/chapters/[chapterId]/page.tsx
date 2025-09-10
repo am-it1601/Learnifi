@@ -52,7 +52,7 @@ const ChapterIdPage = async ({
       <div className="flex flex-col max-w-4xl mx-auto pb-20">
         <div className="p-4">
           <VideoPlayer
-            chapterId={chapter.id}
+            chapterId={chapterId}
             courseId={courseId}
             title={chapter.title}
             nextChapterId={nextChapter?.id}
@@ -76,7 +76,8 @@ const ChapterIdPage = async ({
         </div>
         <Separator />
         <div>
-          <Preview value={chapter.description!} />
+          {/* <Preview value={chapter.description!} /> */}
+          {chapter.description!}
         </div>
         {!!attachments.length && (
           <>
@@ -90,7 +91,7 @@ const ChapterIdPage = async ({
                   target="_blank"
                 >
                    <File /> 
-                  <p>{attachment.name}</p>
+                  <p className="line-clamp-1">{attachment.name}</p>
                 </a>
               ))}
             </div>
