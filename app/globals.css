@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+
+@import "uploadthing/tw/v4";
+@source "../node_modules/@uploadthing/react/dist"; /** <-- depends on your project structure */
+
 html,
 body,
 :root {
@@ -131,4 +135,4 @@ body,
   font-size: 16px !important;
 }
 
-@import "@uploadthing/react/styles.css";
+/* @import "@uploadthing/react/styles.css"; */

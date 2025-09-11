@@ -76,8 +76,8 @@ const ChapterIdPage = async ({
         </div>
         <Separator />
         <div>
-          {/* <Preview value={chapter.description!} /> */}
-          {chapter.description!}
+          <Preview value={chapter.description!} />
+          {/* {chapter.description!} */}
         </div>
         {!!attachments.length && (
           <>
