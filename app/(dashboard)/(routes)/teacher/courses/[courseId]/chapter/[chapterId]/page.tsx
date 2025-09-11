@@ -1,7 +1,7 @@
 import { IconBadge } from "@/components/icon-badge";
 import db from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
-import { Eye, LayoutDashboard, Video } from "lucide-react";
+import { ArrowLeft, Eye, LayoutDashboard, Video } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ChapterTitleForm } from "./_components/chapter-title-form";
@@ -56,8 +56,11 @@ const ChapterIdPage = async ({
           <div className="w-full">
             <Link
               href={`/teacher/courses/${chapterId}`}
-              className="flex items-center text-sm hover: opacity-75 transition"
-            ></Link>
+              className="flex items-center text-sm hover: opacity-75 transition mb-6"
+            >
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to course setup
+            </Link>
             <div className="flex items-center justify-between w-full">
               <div className="flex flex-col gap-y-2">
                 <h1 className="text-2xl font-medium">Chapter Creation</h1>

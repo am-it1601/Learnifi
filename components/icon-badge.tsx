@@ -10,10 +10,6 @@ const backgroundVariants = cva(
         default: "text-sky-100",
         success: "text-emerald-100",
       },
-    //   iconVariant: {
-    //     default: "bg-sky-500/10",
-    //     success: "bg-emerald-500/10",
-    //   },
       size: {
         default: "p-2",
         sm: "p-1",

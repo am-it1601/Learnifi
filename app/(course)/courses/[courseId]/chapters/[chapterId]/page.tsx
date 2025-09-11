@@ -43,7 +43,7 @@ const ChapterIdPage = async ({
   const completedOnEnd = !!purchase && !userProgress?.isCompleted;
   return (
     <div>
-      {userProgress?.isCompleted && (
+      {!userProgress?.isCompleted && (
         <Banner
           variant={"warning"}
           label="You need to purchase this course to watch this chapter."

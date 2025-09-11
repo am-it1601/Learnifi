@@ -1,11 +1,11 @@
 import { Actions } from "@/app/(dashboard)/_components/actions";
-import { AttachmentForm } from "@/app/(dashboard)/_components/attachment-form";
-import { CategoryForm } from "@/app/(dashboard)/_components/category-form";
-import { ChaptersForm } from "@/app/(dashboard)/_components/chapters-form";
-import { DescriptionForm } from "@/app/(dashboard)/_components/description-form";
-import { ImageForm } from "@/app/(dashboard)/_components/image-form";
-import { PriceForm } from "@/app/(dashboard)/_components/price-form";
-import { TitleForm } from "@/app/(dashboard)/_components/title-form";
+import { AttachmentForm } from "./_components/attachment-form";
+import { CategoryForm } from "./_components/category-form";
+import { ChaptersForm } from "./_components/chapters-form";
+import { DescriptionForm } from "./_components/description-form";
+import { ImageForm } from "./_components/image-form";
+import { PriceForm } from "./_components/price-form";
+import { TitleForm } from "./_components/title-form";
 import { Banner } from "@/components/banner";
 import { IconBadge } from "@/components/icon-badge";
 import db from "@/lib/db";

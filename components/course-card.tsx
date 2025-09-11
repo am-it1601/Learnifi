@@ -26,7 +26,7 @@ function CourseCard({
 }: CourseCardProps) {
   return (
     <Link href={`/courses/${id}`}>
-      <div className="group hover:shadow-sm transition overflow-hidden border rounded-lg p-3 h-full">
+      <div className="group hover:shadow-xs transition overflow-hidden border rounded-lg p-3 h-full">
         <div className="relative w-full aspect-video rounded-md overflow-hidden">
           <Image className="object-cover" src={imageUrl} fill alt={title} />
         </div>
